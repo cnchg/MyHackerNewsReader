@@ -110,17 +110,18 @@ public class MainActivity extends AppCompatActivity {
             int articleTitleIndex = c.getColumnIndex("title");
             int articleTimeIndex = c.getColumnIndex("articleTime");
 
-            c.moveToFirst();
+            //c.moveToFirst();
 
-            while (c != null){
+            if (c != null && c.moveToFirst()){
 
-                Log.i("DB Info articleID", Integer.toString(c.getInt(articleIDIndex)));
-                Log.i("DB Info articleURL", c.getString(articleURLIndex));
-                Log.i("DB Info articleTitle", c.getString(articleTitleIndex));
-                Log.i("DB Info articleTime", c.getString(articleTimeIndex));
+                do {
 
-                c.moveToNext();
+                    Log.i("DB Info articleID", Integer.toString(c.getInt(articleIDIndex)));
+                    Log.i("DB Info articleURL", c.getString(articleURLIndex));
+                    Log.i("DB Info articleTitle", c.getString(articleTitleIndex));
+                    Log.i("DB Info articleTime", c.getString(articleTimeIndex));
 
+                }while (c.moveToNext());
             }
 
             //Log.i("Article IDs", articleIDs.toString());
